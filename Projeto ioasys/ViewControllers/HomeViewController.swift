@@ -13,18 +13,31 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var companiesCollectionView: UICollectionView!
     
-    var enterprises = Enterprise.all
+    var enterprises = [Enterprise]()
     var filteredCompanies: [Enterprise] = []
+    
+    var webService = WebService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        fetchEnterprises()
         
         searchBar.searchTextField.backgroundColor = UIColor(named: "textFieldBg")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func fetchEnterprises() {
+        webService.get { (enterprises) in
+            DispatchQueue.main.async {
+                self.enterprises = enterprises
+                print("Enterprises: \(enterprises)")
+                self.companiesCollectionView.reloadData()
+            }
+        }
     }
 
 }
@@ -38,7 +51,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let companyCell = companiesCollectionView.dequeueReusableCell(withReuseIdentifier: "companyCell", for: indexPath) as! CompanyCollectionViewCell
         
         companyCell.layer.cornerRadius = 4
-        companyCell.companyNameLabel.text = filteredCompanies[indexPath.row].name
+        companyCell.companyNameLabel.text = filteredCompanies[indexPath.row].enterprise_name
+        companyCell.companyLogoImage.image = UIImage(named: filteredCompanies[indexPath.row].photo)
         
         return companyCell
     }
@@ -47,7 +61,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "companySegue" {
                 let companyDetailViewController = segue.destination as! CompanyDetailViewController
-                companyDetailViewController.navigationController?.title = enterprises[indexPath.row].name
+                companyDetailViewController.navigationController?.title = enterprises[indexPath.row].enterprise_name
             }
         }
     }
@@ -87,7 +101,7 @@ extension HomeViewController: UISearchBarDelegate {
             companiesCollectionView.reloadData()
         }
         
-        filteredCompanies = enterprises.filter({$0.name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
+        filteredCompanies = enterprises.filter({$0.enterprise_name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
         
         companiesCollectionView.reloadData()
     }

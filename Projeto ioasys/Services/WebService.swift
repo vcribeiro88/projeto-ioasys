@@ -9,14 +9,22 @@ import Foundation
 
 class WebService {
     var session: URLSession!
-    let url = URL(string: "https://empresas.ioasys.com.br/api/v1/enterprises?enterprise_types=1&name=aQm")!
+    let url = URL(string: "https://empresas.ioasys.com.br/api/v1/enterprises")!
     
     init() {
         self.session = URLSession.shared
     }
     
     func get(completion: @escaping ([Enterprise]) -> Void) {
-        let dataTask = session.dataTask(with: url) { (data, response, error) in
+        
+        var request = URLRequest(url: self.url)
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("YVPHj_M1KW-ewdh6s6ofvA", forHTTPHeaderField: "access-token")
+        request.setValue("9YPtjupL0jwYldN5GsKKQA", forHTTPHeaderField: "client")
+        request.setValue("testeapple@ioasys.com.br", forHTTPHeaderField: "uid")
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
             if let _ = error {
                 completion([])
                 return
@@ -33,8 +41,8 @@ class WebService {
             }
             
             do {
-                let enterprises = try JSONDecoder().decode([Enterprise].self, from: json)
-                completion(enterprises)
+                let enterprises = try JSONDecoder().decode(EnterpriseList.self, from: json)
+                completion(enterprises.enterprises)
             } catch {
                 print(error)
                 completion([])
