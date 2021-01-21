@@ -13,7 +13,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var companiesCollectionView: UICollectionView!
     
-    var companies = ["Empresa X", "Empresa Y", "Empresa Z", "Empresa XZ"]
+    var companies = Company.all
+    var filteredCompanies: [Company] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,14 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return companies.count
+        return filteredCompanies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let companyCell = companiesCollectionView.dequeueReusableCell(withReuseIdentifier: "companyCell", for: indexPath) as! CompanyCollectionViewCell
         
         companyCell.layer.cornerRadius = 4
-        companyCell.companyNameLabel.text = companies[indexPath.row]
+        companyCell.companyNameLabel.text = filteredCompanies[indexPath.row].name
         
         return companyCell
     }
@@ -66,5 +67,19 @@ extension HomeViewController: UISearchBarDelegate {
         searchBar.layer.position.y -= 50
         companiesCollectionView.layer.position.y -= 50
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text!.isEmpty {
+            filteredCompanies = []
+            companiesCollectionView.reloadData()
+        }
+        
+        filteredCompanies = companies.filter({$0.name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
+        
+        companiesCollectionView.reloadData()
+    }
 }
 
+
+//({$0.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(searchBar.text!.lowercased().folding(options: .diacriticInsensitive, locale: .current))})
