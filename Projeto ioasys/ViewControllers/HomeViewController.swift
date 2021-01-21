@@ -13,14 +13,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var companiesCollectionView: UICollectionView!
     
-    var companies = Company.all
-    var filteredCompanies: [Company] = []
+    var enterprises = Enterprise.all
+    var filteredCompanies: [Enterprise] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         searchBar.searchTextField.backgroundColor = UIColor(named: "textFieldBg")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
@@ -39,6 +43,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return companyCell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "companySegue" {
+                let companyDetailViewController = segue.destination as! CompanyDetailViewController
+                companyDetailViewController.navigationController?.title = enterprises[indexPath.row].name
+            }
+        }
+    }
     
 }
 
@@ -75,7 +87,7 @@ extension HomeViewController: UISearchBarDelegate {
             companiesCollectionView.reloadData()
         }
         
-        filteredCompanies = companies.filter({$0.name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
+        filteredCompanies = enterprises.filter({$0.name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
         
         companiesCollectionView.reloadData()
     }
