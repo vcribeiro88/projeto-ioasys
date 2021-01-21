@@ -15,6 +15,7 @@
 		5ECBD7CC25B920FC00B6178E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ECBD7CA25B920FC00B6178E /* LaunchScreen.storyboard */; };
 		5ECBD7D725B920FC00B6178E /* Projeto_ioasysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7D625B920FC00B6178E /* Projeto_ioasysTests.swift */; };
 		5ECBD7E225B920FC00B6178E /* Projeto_ioasysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7E125B920FC00B6178E /* Projeto_ioasysUITests.swift */; };
+		5ECBD7FF25B930B900B6178E /* CompanyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7FE25B930B900B6178E /* CompanyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5ECBD7DD25B920FC00B6178E /* Projeto ioasysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Projeto ioasysUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECBD7E125B920FC00B6178E /* Projeto_ioasysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto_ioasysUITests.swift; sourceTree = "<group>"; };
 		5ECBD7E325B920FC00B6178E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ECBD7FE25B930B900B6178E /* CompanyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		5ECBD7F625B9294500B6178E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5ECBD7FE25B930B900B6178E /* CompanyCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECBD7FF25B930B900B6178E /* CompanyCollectionViewCell.swift in Sources */,
 				5ECBD7C425B920FB00B6178E /* HomeViewController.swift in Sources */,
 				5ECBD7C025B920FB00B6178E /* AppDelegate.swift in Sources */,
 				5ECBD7C225B920FB00B6178E /* SceneDelegate.swift in Sources */,

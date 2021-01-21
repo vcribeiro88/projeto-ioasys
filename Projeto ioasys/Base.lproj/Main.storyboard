@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,28 +18,123 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="hOS-Br-lt1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="y8B-pj-OST"/>
+                                    <constraint firstAttribute="height" constant="200" id="y8B-pj-OST"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_menor" translatesAutoresizingMaskIntoConstraints="NO" id="kHo-oF-7wp">
+                                <rect key="frame" x="125" y="44" width="165" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_menor" translatesAutoresizingMaskIntoConstraints="NO" id="0wc-fn-TyK">
+                                <rect key="frame" x="-13" y="108" width="130" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_menor" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-ta-Yfo">
+                                <rect key="frame" x="285" y="115" width="96" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_menor" translatesAutoresizingMaskIntoConstraints="NO" id="UwD-kL-wNz">
+                                <rect key="frame" x="318" y="22" width="96" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nc1-aj-tOv">
+                                <rect key="frame" x="0.0" y="233" width="414" height="663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tY7-7e-1KH">
+                                    <size key="itemSize" width="409" height="167"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="companyCell" id="H0p-uP-FcD" customClass="CompanyCollectionViewCell" customModule="Projeto_ioasys" customModuleProvider="target">
+                                        <rect key="frame" x="2.5" y="0.0" width="409" height="167"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Om2-UM-Rvy">
+                                            <rect key="frame" x="0.0" y="0.0" width="409" height="167"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="l4U-Zw-fiy">
+                                                    <rect key="frame" x="100.5" y="40" width="208" height="87"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 1" translatesAutoresizingMaskIntoConstraints="NO" id="PkK-hB-ihe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="208" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="5uI-fk-Ccd"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMPRESA X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PO-D0-hWv">
+                                                            <rect key="frame" x="0.0" y="63" width="208" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="l4U-Zw-fiy" firstAttribute="centerX" secondItem="Om2-UM-Rvy" secondAttribute="centerX" id="1iS-Gq-a8L"/>
+                                                <constraint firstItem="l4U-Zw-fiy" firstAttribute="centerY" secondItem="Om2-UM-Rvy" secondAttribute="centerY" id="KnH-eI-CLa"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.47450980392156861" green="0.73333333333333328" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="customSize" width="409" height="167"/>
+                                        <connections>
+                                            <outlet property="companyLogoImage" destination="PkK-hB-ihe" id="INI-Qy-9qJ"/>
+                                            <outlet property="companyNameLabel" destination="9PO-D0-hWv" id="ahr-mt-viT"/>
+                                            <outlet property="stackView" destination="l4U-Zw-fiy" id="sYd-Ws-IpL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="PjN-rl-56g"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0hn-1f-Smf"/>
+                                </connections>
+                            </collectionView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Pesquise por empresa" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsU-cU-GbF">
+                                <rect key="frame" x="0.0" y="169" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0Y7-rS-chw"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="FsU-cU-GbF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="4BR-aA-j0w"/>
                             <constraint firstItem="hOS-Br-lt1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="E5b-t0-NQR"/>
+                            <constraint firstItem="FsU-cU-GbF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Szk-9w-SOl"/>
+                            <constraint firstAttribute="bottom" secondItem="Nc1-aj-tOv" secondAttribute="bottom" id="aaV-ow-6I6"/>
+                            <constraint firstItem="Nc1-aj-tOv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e5F-Qr-uSb"/>
                             <constraint firstItem="hOS-Br-lt1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gQu-Ey-jlb"/>
                             <constraint firstItem="hOS-Br-lt1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jbS-qr-Qxi"/>
+                            <constraint firstItem="FsU-cU-GbF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uCv-Zi-CKH"/>
+                            <constraint firstItem="Nc1-aj-tOv" firstAttribute="top" secondItem="FsU-cU-GbF" secondAttribute="bottom" constant="8" id="yNb-LM-2UB"/>
+                            <constraint firstItem="Nc1-aj-tOv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zan-8Q-Isf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="companiesCollectionView" destination="Nc1-aj-tOv" id="CZt-Y2-myl"/>
+                        <outlet property="headerImage" destination="hOS-Br-lt1" id="bqz-H9-jkW"/>
+                        <outlet property="searchBar" destination="FsU-cU-GbF" id="aPw-tS-oms"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-146.37681159420291" y="93.75"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="colorTheme"/>
     <resources>
+        <image name="Ellipse 1" width="208" height="104"/>
         <image name="header" width="748" height="467"/>
+        <image name="logo_menor" width="80" height="63.5"/>
+        <namedColor name="colorTheme">
+            <color red="0.96078431372549022" green="0.11764705882352941" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
