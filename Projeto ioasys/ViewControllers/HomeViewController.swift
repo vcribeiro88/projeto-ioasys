@@ -30,6 +30,17 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "companyDetailSegue" {
+            
+            guard let indexPath = companiesCollectionView.indexPathsForSelectedItems?.first else {return}
+            
+            let companyDetailViewController = segue.destination as! CompanyDetailViewController
+            companyDetailViewController.currentEnterprise = filteredCompanies[indexPath.row]
+        }
+    }
+    
     func fetchEnterprises() {
         webService.get { (enterprises) in
             DispatchQueue.main.async {
@@ -55,15 +66,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         companyCell.companyLogoImage.image = UIImage(named: filteredCompanies[indexPath.row].photo)
         
         return companyCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "companySegue" {
-                let companyDetailViewController = segue.destination as! CompanyDetailViewController
-                companyDetailViewController.navigationController?.title = enterprises[indexPath.row].enterprise_name
-            }
-        }
     }
     
 }
@@ -101,11 +103,8 @@ extension HomeViewController: UISearchBarDelegate {
             companiesCollectionView.reloadData()
         }
         
-        filteredCompanies = enterprises.filter({$0.enterprise_name.lowercased().unaccent().contains(searchBar.text!.lowercased().unaccent())})
+        filteredCompanies = enterprises.filter({$0.enterprise_name.lowercased().unaccent().hasPrefix(searchBar.text!.lowercased().unaccent())})
         
         companiesCollectionView.reloadData()
     }
 }
-
-
-//({$0.lowercased().folding(options: .diacriticInsensitive, locale: .current).contains(searchBar.text!.lowercased().folding(options: .diacriticInsensitive, locale: .current))})

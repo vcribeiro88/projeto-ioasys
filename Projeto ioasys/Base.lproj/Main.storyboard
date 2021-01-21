@@ -85,7 +85,7 @@
                                             <outlet property="companyLogoImage" destination="PkK-hB-ihe" id="INI-Qy-9qJ"/>
                                             <outlet property="companyNameLabel" destination="9PO-D0-hWv" id="ahr-mt-viT"/>
                                             <outlet property="stackView" destination="l4U-Zw-fiy" id="sYd-Ws-IpL"/>
-                                            <segue destination="82V-5u-jdX" kind="show" identifier="companyDetail" id="KgS-2G-BxS"/>
+                                            <segue destination="82V-5u-jdX" kind="show" identifier="companyDetailSegue" id="KgS-2G-BxS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -173,7 +173,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-v3-7rT">
                                 <rect key="frame" x="20" y="263" width="374" height="599"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -198,6 +198,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Empresa X" id="ZgO-GY-rJo"/>
+                    <connections>
+                        <outlet property="enterpriseLogo" destination="4Io-jk-7fd" id="pcA-bk-KLp"/>
+                        <outlet property="enterpriseName" destination="ndo-Gi-zsC" id="1UH-AP-yrQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sf5-qZ-X0k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

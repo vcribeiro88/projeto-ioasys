@@ -9,7 +9,7 @@ import Foundation
 
 class WebService {
     var session: URLSession!
-    let url = URL(string: "https://empresas.ioasys.com.br/api/v1/enterprises")!
+    public let url = URL(string: "https://empresas.ioasys.com.br/api/v1/enterprises")!
     
     init() {
         self.session = URLSession.shared
