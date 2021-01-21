@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5ECBD7C025B920FB00B6178E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7BF25B920FB00B6178E /* AppDelegate.swift */; };
 		5ECBD7C225B920FB00B6178E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7C125B920FB00B6178E /* SceneDelegate.swift */; };
-		5ECBD7C425B920FB00B6178E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7C325B920FB00B6178E /* ViewController.swift */; };
+		5ECBD7C425B920FB00B6178E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECBD7C325B920FB00B6178E /* HomeViewController.swift */; };
 		5ECBD7C725B920FB00B6178E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ECBD7C525B920FB00B6178E /* Main.storyboard */; };
 		5ECBD7C925B920FC00B6178E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ECBD7C825B920FC00B6178E /* Assets.xcassets */; };
 		5ECBD7CC25B920FC00B6178E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ECBD7CA25B920FC00B6178E /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 		5ECBD7BC25B920FB00B6178E /* Projeto ioasys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Projeto ioasys.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECBD7BF25B920FB00B6178E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ECBD7C125B920FB00B6178E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5ECBD7C325B920FB00B6178E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5ECBD7C325B920FB00B6178E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ECBD7C625B920FB00B6178E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5ECBD7C825B920FC00B6178E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ECBD7CB25B920FC00B6178E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,9 +99,12 @@
 		5ECBD7BE25B920FB00B6178E /* Projeto ioasys */ = {
 			isa = PBXGroup;
 			children = (
+				5ECBD7F725B9294F00B6178E /* Model */,
+				5ECBD7F625B9294500B6178E /* Cell */,
+				5ECBD7F525B9293800B6178E /* ViewControllers */,
 				5ECBD7BF25B920FB00B6178E /* AppDelegate.swift */,
 				5ECBD7C125B920FB00B6178E /* SceneDelegate.swift */,
-				5ECBD7C325B920FB00B6178E /* ViewController.swift */,
+				5ECBD7C325B920FB00B6178E /* HomeViewController.swift */,
 				5ECBD7C525B920FB00B6178E /* Main.storyboard */,
 				5ECBD7C825B920FC00B6178E /* Assets.xcassets */,
 				5ECBD7CA25B920FC00B6178E /* LaunchScreen.storyboard */,
@@ -126,6 +129,27 @@
 				5ECBD7E325B920FC00B6178E /* Info.plist */,
 			);
 			path = "Projeto ioasysUITests";
+			sourceTree = "<group>";
+		};
+		5ECBD7F525B9293800B6178E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5ECBD7F625B9294500B6178E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5ECBD7F725B9294F00B6178E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ECBD7C425B920FB00B6178E /* ViewController.swift in Sources */,
+				5ECBD7C425B920FB00B6178E /* HomeViewController.swift in Sources */,
 				5ECBD7C025B920FB00B6178E /* AppDelegate.swift in Sources */,
 				5ECBD7C225B920FB00B6178E /* SceneDelegate.swift in Sources */,
 			);
