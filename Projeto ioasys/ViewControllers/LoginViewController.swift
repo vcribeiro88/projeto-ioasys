@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        loginButton.layer.cornerRadius = 8
+        
         emailTextField.text = "testeapple@ioasys.com.br"
         passwordTextfield.text = "12341234"
     }

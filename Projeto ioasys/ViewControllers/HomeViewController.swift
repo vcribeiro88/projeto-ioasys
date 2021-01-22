@@ -11,10 +11,10 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var headerImage: UIImageView!
-    @IBOutlet weak var companiesCollectionView: UICollectionView!
+    @IBOutlet weak var enterprisesCollectionView: UICollectionView!
     
     var enterprises = [Enterprise]()
-    var filteredCompanies: [Enterprise] = []
+    var filteredEnterprises: [Enterprise] = []
     
     var webService = WebService()
     
@@ -34,12 +34,12 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "companyDetailSegue" {
+        if segue.identifier == "enterpriseDetailSegue" {
             
-            guard let indexPath = companiesCollectionView.indexPathsForSelectedItems?.first else {return}
+            guard let indexPath = enterprisesCollectionView.indexPathsForSelectedItems?.first else {return}
             
-            let companyDetailViewController = segue.destination as! CompanyDetailViewController
-            companyDetailViewController.currentEnterprise = filteredCompanies[indexPath.row]
+            let enterpriseDetailViewController = segue.destination as! EnterpriseDetailViewController
+            enterpriseDetailViewController.currentEnterprise = filteredEnterprises[indexPath.row]
         }
     }
     
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 self.enterprises = enterprises
                 print("Enterprises: \(enterprises)")
-                self.companiesCollectionView.reloadData()
+                self.enterprisesCollectionView.reloadData()
             }
         }
     }
@@ -57,24 +57,24 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredCompanies.count
+        return filteredEnterprises.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let companyCell = companiesCollectionView.dequeueReusableCell(withReuseIdentifier: "companyCell", for: indexPath) as! CompanyCollectionViewCell
+        let enterpriseCell = enterprisesCollectionView.dequeueReusableCell(withReuseIdentifier: "enterpriseCell", for: indexPath) as! EnterprisesCollectionViewCell
         
-        companyCell.layer.cornerRadius = 4
-        companyCell.companyNameLabel.text = filteredCompanies[indexPath.row].enterprise_name
-        companyCell.companyLogoImage.image = UIImage(named: filteredCompanies[indexPath.row].photo)
+        enterpriseCell.layer.cornerRadius = 4
+        enterpriseCell.enterpriseNameLabel.text = filteredEnterprises[indexPath.row].enterprise_name
+        enterpriseCell.enterpriseLogoImage.image = UIImage(named: filteredEnterprises[indexPath.row].photo)
         
-        return companyCell
+        return enterpriseCell
     }
     
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = companiesCollectionView.frame.size
+        let size = enterprisesCollectionView.frame.size
         return CGSize(width: size.width - 32, height: 140)
     }
     
@@ -95,18 +95,18 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         headerImage.layer.position.y -= 50
         searchBar.layer.position.y -= 50
-        companiesCollectionView.layer.position.y -= 50
+        enterprisesCollectionView.layer.position.y -= 50
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text!.isEmpty {
-            filteredCompanies = []
-            companiesCollectionView.reloadData()
+            filteredEnterprises = []
+            enterprisesCollectionView.reloadData()
         }
         
-        filteredCompanies = enterprises.filter({$0.enterprise_name.lowercased().unaccent().hasPrefix(searchBar.text!.lowercased().unaccent())})
+        filteredEnterprises = enterprises.filter({$0.enterprise_name.lowercased().unaccent().hasPrefix(searchBar.text!.lowercased().unaccent())})
         
-        companiesCollectionView.reloadData()
+        enterprisesCollectionView.reloadData()
     }
 }
