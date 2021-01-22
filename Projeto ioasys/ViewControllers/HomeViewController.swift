@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var enterprisesCollectionView: UICollectionView!
+    @IBOutlet weak var numberOfResultsLabel: UILabel!
     
     var enterprises = [Enterprise]()
     var filteredEnterprises: [Enterprise] = []
@@ -26,6 +27,7 @@ class HomeViewController: UIViewController {
         fetchEnterprises()
         
         searchBar.searchTextField.backgroundColor = UIColor(named: "textFieldBg")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +41,7 @@ class HomeViewController: UIViewController {
             guard let indexPath = enterprisesCollectionView.indexPathsForSelectedItems?.first else {return}
             
             let enterpriseDetailViewController = segue.destination as! EnterpriseDetailViewController
-            enterpriseDetailViewController.currentEnterprise = filteredEnterprises[indexPath.row]
+            enterpriseDetailViewController.selectedEnterprise = filteredEnterprises[indexPath.row]
         }
     }
     
@@ -65,7 +67,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         enterpriseCell.layer.cornerRadius = 4
         enterpriseCell.enterpriseNameLabel.text = filteredEnterprises[indexPath.row].enterprise_name
-        enterpriseCell.enterpriseLogoImage.image = UIImage(named: filteredEnterprises[indexPath.row].photo)
+        enterpriseCell.backgroundColor = UIColor(named: "cellBackgroundColorBlue")
+        
+        numberOfResultsLabel.text = "\(filteredEnterprises.count) resultados encontrados"
+        
+        numberOfResultsLabel.isHidden = (filteredEnterprises.isEmpty ? true : false)
+        
         
         return enterpriseCell
     }
@@ -92,20 +99,25 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        headerImage.layer.position.y -= 50
-        searchBar.layer.position.y -= 50
-        enterprisesCollectionView.layer.position.y -= 50
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        filteredEnterprises = enterprises
+        enterprisesCollectionView.reloadData()
+        return true
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text!.isEmpty {
-            filteredEnterprises = []
+            filteredEnterprises = enterprises
             enterprisesCollectionView.reloadData()
         }
         
         filteredEnterprises = enterprises.filter({$0.enterprise_name.lowercased().unaccent().hasPrefix(searchBar.text!.lowercased().unaccent())})
+        
+        if searchBar.text!.isEmpty == false && filteredEnterprises.isEmpty {
+            numberOfResultsLabel.text = "Nenhum resultado encontrado"
+            enterprisesCollectionView.reloadData()
+        }
         
         enterprisesCollectionView.reloadData()
     }

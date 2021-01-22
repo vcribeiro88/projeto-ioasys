@@ -10,25 +10,20 @@ import UIKit
 class EnterpriseDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseLogo: UIImageView!
+    @IBOutlet weak var enterpriseDescription: UITextView!
     @IBOutlet weak var enterpriseName: UILabel!
     
-    var currentEnterprise: Enterprise!
+    var selectedEnterprise: Enterprise!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-//        enterpriseLogo.image = UIImage(named: currentEnterprise.photo)
-        enterpriseName.text = currentEnterprise.enterprise_name
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.title = selectedEnterprise.enterprise_name
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        enterpriseName.text = selectedEnterprise.enterprise_name
+        enterpriseDescription.text = selectedEnterprise.description
     }
 }

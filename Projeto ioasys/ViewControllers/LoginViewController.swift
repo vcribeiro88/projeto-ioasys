@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var incorrectCredentialsLabel: UILabel!
+    @IBOutlet weak var headerImage: UIImageView!
     
     var auth = AuthenticationService()
     var userDataLogin: [String : String] = [:]
@@ -21,9 +23,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         loginButton.layer.cornerRadius = 8
+        headerImage.layer.cornerRadius = 410
         
-        emailTextField.text = "testeapple@ioasys.com.br"
-        passwordTextfield.text = "12341234"
+        self.navigationController?.navigationBar.isHidden = true
+        incorrectCredentialsLabel.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,7 +43,7 @@ class LoginViewController: UIViewController {
                 
                 if userDataLogin == [:] {
                     print("Credenciais incorretas")
-                    
+                    incorrectCredentialsLabel.isHidden = false
                 } else {
                     performSegue(withIdentifier: "loginSegue", sender: userDataLogin)
                 }
