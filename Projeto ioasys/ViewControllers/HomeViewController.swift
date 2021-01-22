@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
     
     var webService = WebService()
     
+    var headerLogin: [String : String] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,7 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     func fetchEnterprises() {
-        webService.get { (enterprises) in
+        webService.get(token: headerLogin["token"]!, client: headerLogin["client"]!, uid: headerLogin["uid"]!) { (enterprises) in
             DispatchQueue.main.async {
                 self.enterprises = enterprises
                 print("Enterprises: \(enterprises)")

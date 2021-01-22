@@ -24,15 +24,25 @@ class LoginViewController: UIViewController {
         passwordTextfield.text = "12341234"
     }
     
-    @IBAction func login(_ sender: Any) {
-        auth.login(email: "testeapple@ioasys.com.br", password: "12341234") { [self](headerAccess) in
-            userDataLogin = headerAccess
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginSegue" {
+            let homeViewController = segue.destination as! HomeViewController
+            homeViewController.headerLogin = sender as! [String : String]
         }
-        
-        if userDataLogin == [:] {
-            print("Credenciais incorretas")
-        } else {
-            performSegue(withIdentifier: "loginSegue", sender: nil)
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        auth.login(email: emailTextField.text!, password: passwordTextfield.text!) { [self](headerAccess) in
+            DispatchQueue.main.async {
+                userDataLogin = headerAccess
+                
+                if userDataLogin == [:] {
+                    print("Credenciais incorretas")
+                    
+                } else {
+                    performSegue(withIdentifier: "loginSegue", sender: userDataLogin)
+                }
+            }
         }
     }
     

@@ -15,14 +15,14 @@ class WebService {
         self.session = URLSession.shared
     }
     
-    func get(completion: @escaping ([Enterprise]) -> Void) {
+    func get(token: String, client: String, uid: String, completion: @escaping ([Enterprise]) -> Void) {
         
         var request = URLRequest(url: self.url)
         
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
-        request.setValue("YVPHj_M1KW-ewdh6s6ofvA", forHTTPHeaderField: "access-token")
-        request.setValue("9YPtjupL0jwYldN5GsKKQA", forHTTPHeaderField: "client")
-        request.setValue("testeapple@ioasys.com.br", forHTTPHeaderField: "uid")
+        request.setValue("\(token)", forHTTPHeaderField: "access-token")
+        request.setValue("\(client)", forHTTPHeaderField: "client")
+        request.setValue("\(uid)", forHTTPHeaderField: "uid")
         
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             if let _ = error {

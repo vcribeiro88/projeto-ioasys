@@ -28,8 +28,6 @@ class AuthenticationService {
         
         let uploadTask = URLSession.shared.uploadTask(with: request, from: json) {(data, response, error) in
             
-
-            
             if let _ = error {
                 completion([:])
             }
